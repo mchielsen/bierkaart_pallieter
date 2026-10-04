@@ -76,7 +76,7 @@ button{font:inherit;color:inherit}
 /* ---------- toolbar ---------- */
 .bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;margin:26px -16px 0;padding:12px 16px 10px;
   background:linear-gradient(180deg,#170d08f2,#170d08e6);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-bottom:1px solid #ffffff10}
-.bar .in{max-width:1180px;margin-inline:auto;display:grid;gap:10px}
+.bar .in{max-width:1180px;margin-inline:auto;display:grid;grid-template-columns:minmax(0,1fr);gap:10px}
 .searchrow{display:flex;gap:10px;align-items:stretch}
 .search{flex:1;min-width:0;display:flex;align-items:center;gap:8px;border-radius:8px;padding:0 12px;border:1px solid #ffffff1c}
 .search svg{flex:none;opacity:.7}
@@ -174,8 +174,8 @@ mark{background:var(--amber);color:#1d1006;text-shadow:none;border-radius:2px;pa
 .pair p{margin:0;font-style:italic;color:var(--note);flex:1;min-width:0}
 .pair .lt{font-style:normal;font-size:.9rem}
 .sizes{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
-.sizebtn{display:inline-block;border:0;border-radius:7px;padding:10px 14px;background:var(--amber);color:#2a1406;font-family:var(--font-board);font-stretch:75%;font-weight:750;letter-spacing:.06em;text-transform:uppercase;font-variant-numeric:tabular-nums;box-shadow:0 2px 0 #8a5a16}
-.sizebtn.ghost{background:#ffffff10;color:var(--letter);box-shadow:none;border:1px solid #ffffff22}
+.sizebtn{display:inline-block;border:1px solid var(--amber);border-radius:7px;padding:8px 14px;background:none;color:var(--amber);font-family:var(--font-board);font-stretch:80%;font-weight:700;font-size:1.05rem;letter-spacing:.05em;text-transform:uppercase;font-variant-numeric:tabular-nums}
+.sizebtn.ghost{border-color:#ffffff33;color:var(--letter-dim)}
 .unkp{font-style:italic;color:var(--letter-dim);font-size:.9rem}
 
 
@@ -183,6 +183,8 @@ mark{background:var(--amber);color:#1d1006;text-shadow:none;border-radius:2px;pa
 .foot .lt{font-style:normal;font-size:.8rem}
 
 @media (max-width:560px){
+  .btn-surprise svg{display:none}
+  .btn-surprise{padding:0 12px}
   .sheet .felt{grid-template-columns:1fr;gap:6px}
   .stage .gl{width:92px}
   .arch .felt{padding-top:64px}
@@ -235,7 +237,7 @@ mark{background:var(--amber);color:#1d1006;text-shadow:none;border-radius:2px;pa
     <div class="searchrow">
       <label class="search felt" for="zoek">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5 21 21"/></svg>
-        <input id="zoek" type="search" placeholder="Zoek bier, stijl, brouwerij…" autocomplete="off" spellcheck="false">
+        <input id="zoek" type="search" placeholder="Zoek een bier…" autocomplete="off" spellcheck="false">
       </label>
       <button class="btn-surprise" id="surprise" type="button" title="Laat de barman kiezen">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="4"/><circle cx="8.5" cy="8.5" r="1.3" fill="currentColor"/><circle cx="15.5" cy="15.5" r="1.3" fill="currentColor"/><circle cx="12" cy="12" r="1.3" fill="currentColor"/></svg>
@@ -257,8 +259,8 @@ mark{background:var(--amber);color:#1d1006;text-shadow:none;border-radius:2px;pa
     </div>
   </div>
   <p class="foot">
-    <span class="lt">Overgenomen van de letterborden in het café</span><br>
-    Prijzen met een <b style="color:var(--amber)">„</b> stonden op het bord als aanhalingsteken: zelfde prijs als de regel erboven. Waar het bord geen prijs toonde staat „aan de bar”. Alcoholpercentages zijn opgezocht; van Storm Pilsner en Pallie Weizener kon ik ze niet vinden. Afstanden zijn hemelsbreed vanaf Prinsenbeek. De prijs aan de bar is leidend.
+    <span class="lt">Biercafé Pallieter · Groenstraat 23 · Prinsenbeek</span><br>
+    Prijzen onder voorbehoud: de prijs aan de bar is leidend. Afstanden zijn hemelsbreed vanaf de brouwerij. Proost!
   </p>
 </main>
 
@@ -275,13 +277,13 @@ const P=(v,l)=>({v,l:l||null});
 // pr = [bitter, zoet, vol, fruit, zuur, geroosterd]
 const B=[
  // VAN DE TAP
- {id:"storm",n:"Storm Pilsner",c:"tap",p:[P(3)],abv:null,st:"Pilsner",br:"Brouwer niet gevonden",pl:null,lc:null,ll:null,col:"#f1c44c",g:"vaas",pr:[2,1,1,1,0,0],m:["fris"],note:"Het goedkoopste glas van het bord en de vaste kraan voor wie gewoon een pils wil. Koud, helder en snel leeg."},
+ {id:"storm",n:"Storm Pilsner",c:"tap",p:[P(3)],abv:null,st:"Pilsner",br:"",pl:null,lc:null,ll:null,col:"#f1c44c",g:"vaas",pr:[2,1,1,1,0,0],m:["fris"],note:"Het goedkoopste glas van de kaart en de vaste kraan voor wie gewoon een pils wil. Koud, helder en snel leeg."},
  {id:"blondenon",n:"Blonde Non",c:"tap",p:[P(5)],abv:8,st:"Abdijblond",br:"Brouwerij Rolduc",pl:"Kerkrade",lc:"NL",ll:[50.866,6.062],col:"#e6a738",cloudy:1,g:"tulip",pr:[2,2,3,3,0,0],m:[],note:"Abdijblond van de brouwerij bij abdij Rolduc. Bloemig en fruitig, licht troebel en verrassend toegankelijk voor 8%."},
- {id:"weizener",n:"Pallie Weizener",c:"tap",p:[P(4.5,"33 cl"),P(6.75,"50 cl")],abv:null,st:"Weizen",br:"Herkomst niet op het bord",pl:null,lc:null,ll:null,col:"#f2b445",cloudy:1,g:"weizen",pr:[1,2,2,3,1,0],m:["fris"],note:"De weizen van de tap, in twee maten. Op het bord als Weizener; waar hij gebrouwen wordt staat er niet bij en kon ik niet vinden."},
+ {id:"weizener",n:"Pallie Weizener",c:"tap",p:[P(4.5,"33 cl"),P(6.75,"50 cl")],abv:null,st:"Weizen",br:"",pl:null,lc:null,ll:null,col:"#f2b445",cloudy:1,g:"weizen",pr:[1,2,2,3,1,0],m:["fris"],note:"De weizen van de tap, in een glas van 33 of 50 cl. Een weizen is troebel en zacht, vaak met tonen van banaan en kruidnagel."},
  {id:"wittetrappist",n:"La Trappe Witte Trappist",c:"tap",p:[P(5,"30 cl"),P(8.5,"50 cl")],abv:5.5,st:"Witbier",br:"La Trappe",pl:"Berkel-Enschot",lc:"NL",ll:[51.585,5.14],col:"#f4d47c",cloudy:1,g:"tumbler",pr:[1,2,2,3,1,0],m:["fris"],tr:1,note:"Witbier met het trappistenlabel, uit de Koningshoeven bij Tilburg. Citrus, kruidig en zacht fris."},
  {id:"guinness",n:"Guinness",c:"tap",p:[P(7)],abv:4.2,st:"Dry stout",br:"St. James's Gate",pl:"Dublin",lc:"IE",ll:[53.343,-6.267],col:"#1b0d07",foam:"#ead9b6",foamH:9,sink:1,g:"pint",pr:[3,1,2,0,0,5],m:["donker"],note:"Droge stout uit Dublin. Geroosterde gerst, koffie en een romige kraag. Kijk naar de belletjes: die zakken naar beneden."},
  {id:"sournsweet",n:"Jopen Sour 'n Sweet",c:"tap",p:[P(5.75)],abv:4.5,st:"Fruited sour",br:"Jopen × Vault City",pl:"Haarlem",lc:"NL",ll:[52.381,4.636],col:"#c2303f",foam:"#f6d6db",g:"teku",pr:[0,4,2,5,4,0],m:["fruit","fris"],note:"Samenwerking tussen Jopen en het Schotse Vault City. Framboos, aardbei, braam en kers, met citroen voor het frisse zuur."},
- {id:"pashnfruit",n:"Rascals Pash 'n Fruit",c:"tap",p:null,abv:5,st:"NEIPA",br:"Rascals Brewing",pl:"Dublin",lc:"IE",ll:[53.343,-6.267],col:"#f5b334",cloudy:1,g:"teku",pr:[3,1,3,5,0,0],m:["hop","fruit"],note:"Op het bord als Pass n Fruit. Een troebele New England IPA vol passievrucht: sappig en niet te bitter."},
+ {id:"pashnfruit",n:"Rascals Pash 'n Fruit",c:"tap",p:null,abv:5,st:"NEIPA",br:"Rascals Brewing",pl:"Dublin",lc:"IE",ll:[53.343,-6.267],col:"#f5b334",cloudy:1,g:"teku",pr:[3,1,3,5,0,0],m:["hop","fruit"],note:"Een troebele New England IPA vol passievrucht: sappig en niet te bitter."},
  {id:"fruitbomb",n:"Moersleutel Fruit Bomb",c:"tap",p:null,abv:8,st:"Double IPA",br:"Moersleutel",pl:"Alkmaar",lc:"NL",ll:[52.632,4.748],col:"#eda43a",cloudy:1,g:"teku",pr:[3,2,4,5,0,0],m:["hop","fruit"],note:"Double IPA die precies doet wat de naam zegt: een vracht tropisch fruit en een stevige 8%."},
  {id:"dipalove",n:"Jopen DIPA Love",c:"tap",p:null,abv:8.5,st:"Double IPA",br:"Jopen",pl:"Haarlem",lc:"NL",ll:[52.381,4.636],col:"#f2a838",cloudy:1,g:"teku",pr:[3,2,4,5,0,0],m:["hop","fruit"],note:"Tropische double IPA met passievrucht, mango en limoen. Zacht in de mond, schone afdronk zonder bittere uithaal."},
  {id:"wipers",n:"Wipers Times Tripel",c:"tap",p:null,abv:8.2,st:"Tripel",br:"Brouwerij Kazematten",pl:"Ieper",lc:"BE",ll:[50.851,2.886],col:"#e9ad3c",g:"tulip",pr:[3,2,3,3,0,0],m:[],note:"Tripel uit Ieper, genoemd naar de loopgravenkrant die Britse soldaten daar in de Eerste Wereldoorlog maakten."},
@@ -289,23 +291,23 @@ const B=[
  {id:"carolus",n:"Gouden Carolus",c:"donker",p:[P(5.75)],abv:8.5,st:"Donker sterk",br:"Het Anker",pl:"Mechelen",lc:"BE",ll:[51.028,4.48],col:"#5c2611",foam:"#efdcbc",g:"tulip",pr:[1,4,4,3,0,3],m:["donker"],note:"Mechels donker, genoemd naar keizer Karel V. Karamel, rozijnen en een warme, zoete afdronk."},
  {id:"bernardus",n:"St. Bernardus Abt 12",c:"donker",p:[P(5.75)],d:1,abv:10,st:"Quadrupel",br:"St. Bernardus",pl:"Watou",lc:"BE",ll:[50.858,2.618],col:"#3f170b",foam:"#e8d3ad",g:"chalice",pr:[1,4,5,4,0,3],m:["donker"],note:"Een van de meest geroemde quadrupels van België. Pruim, vijg, toffee en kruiden; de 10% voel je pas later."},
  {id:"chimay",n:"Chimay Blauw",c:"donker",p:[P(5.75)],d:1,abv:9,st:"Trappist donker",br:"Abdij van Scourmont",pl:"Chimay",lc:"BE",ll:[49.98,4.33],col:"#4a1d0e",foam:"#ecd8b4",g:"chalice",tr:1,pr:[2,3,4,3,0,3],m:["donker"],note:"De Grande Réserve van de trappisten uit Henegouwen. Portachtig en kruidig, op zijn best net iets minder koud."},
- {id:"kasteeldonker",n:"Kasteel Donker",c:"donker",p:[P(5.75)],d:1,abv:11,st:"Quadrupel",br:"Van Honsebrouck",pl:"Izegem",lc:"BE",ll:[50.914,3.214],col:"#2f1108",foam:"#e3cda4",g:"chalice",pr:[1,5,5,3,0,3],m:["donker"],note:"Op het bord gewoon Kasteel, bij de donkere. Stroperig zoet, chocolade en kersenlikeur, en 11%."},
- {id:"zundert",n:"Zundert 8 / 10",c:"donker",p:[P(6)],abv:"8 / 10",abvN:9,st:"Trappist",br:"Brouwerij De Kievit",pl:"Zundert",lc:"NL",ll:[51.47,4.66],col:"#7a3514",foam:"#f0dcbc",g:"chalice",tr:1,pr:[2,3,4,3,0,2],m:["donker"],note:"De trappist uit buurgemeente Zundert, de dichtstbijzijnde brouwerij van het hele bord. De 8 is amberbruin en kruidig, de 10 een volle quadrupel."},
+ {id:"kasteeldonker",n:"Kasteel Donker",c:"donker",p:[P(5.75)],d:1,abv:11,st:"Quadrupel",br:"Van Honsebrouck",pl:"Izegem",lc:"BE",ll:[50.914,3.214],col:"#2f1108",foam:"#e3cda4",g:"chalice",pr:[1,5,5,3,0,3],m:["donker"],note:"Stroperig zoet, chocolade en kersenlikeur, en 11%."},
+ {id:"zundert",n:"Zundert 8 / 10",c:"donker",p:[P(6)],abv:"8 / 10",abvN:9,st:"Trappist",br:"Brouwerij De Kievit",pl:"Zundert",lc:"NL",ll:[51.47,4.66],col:"#7a3514",foam:"#f0dcbc",g:"chalice",tr:1,pr:[2,3,4,3,0,2],m:["donker"],note:"De trappist uit buurgemeente Zundert, de dichtstbijzijnde brouwerij van de hele kaart. De 8 is amberbruin en kruidig, de 10 een volle quadrupel."},
  {id:"straffe",n:"Straffe Hendrik Quadrupel",c:"donker",p:[P(6)],d:1,abv:11,st:"Quadrupel",br:"De Halve Maan",pl:"Brugge",lc:"BE",ll:[51.209,3.224],col:"#4b1a0a",foam:"#e9d4ae",g:"tulip",pr:[1,4,5,4,0,3],m:["donker"],note:"Brugse quadrupel. Donker fruit, gebrande suiker en een flinke 11%."},
- {id:"adriaen",n:"Adriaen Brouwer Oaked",c:"donker",p:[P(6)],guess:1,abv:10,st:"Houtgerijpt donker",br:"Brouwerij Roman",pl:"Oudenaarde",lc:"BE",ll:[50.845,3.604],col:"#3a160a",foam:"#e5cfa6",g:"tulip",pr:[1,4,5,3,0,3],m:["donker"],note:"Gerijpt op whisky- en sherryvaten. Hout, karamel en donker fruit: een bier om langzaam leeg te drinken."},
+ {id:"adriaen",n:"Adriaen Brouwer Oaked",c:"donker",p:null,abv:10,st:"Houtgerijpt donker",br:"Brouwerij Roman",pl:"Oudenaarde",lc:"BE",ll:[50.845,3.604],col:"#3a160a",foam:"#e5cfa6",g:"tulip",pr:[1,4,5,3,0,3],m:["donker"],note:"Gerijpt op whisky- en sherryvaten. Hout, karamel en donker fruit: een bier om langzaam leeg te drinken."},
  {id:"waterloo",n:"Waterloo Double Dark",c:"donker",p:[P(5.25)],abv:8,st:"Donker sterk",br:"Brasserie de Mont-Saint-Jean",pl:"Waterloo",lc:"BE",ll:[50.715,4.399],col:"#3d170b",foam:"#e6d0a9",g:"chalice",pr:[1,4,4,2,0,3],m:["donker"],note:"Gebrouwen vlak bij het slagveld van Waterloo. Karamel, geroosterde mout en een zachte zoetheid."},
  {id:"westmalledubbel",n:"Westmalle Dubbel",c:"donker",p:[P(5.25)],d:1,abv:7,st:"Dubbel",br:"Abdij van Westmalle",pl:"Westmalle",lc:"BE",ll:[51.287,4.689],col:"#4e1f0d",foam:"#ecd7b2",g:"chalice",tr:1,pr:[2,3,3,3,0,3],m:["donker"],note:"De dubbel waar de rest zich aan meet. Droog voor een donker bier, met karamel, banaan en een vleugje koffie."},
  {id:"isidor",n:"La Trappe Isidor",c:"donker",p:[P(5.75)],abv:7.5,st:"Trappist amber",br:"La Trappe",pl:"Berkel-Enschot",lc:"NL",ll:[51.585,5.14],col:"#9a4a16",g:"chalice",tr:1,pr:[1,4,3,3,0,2],m:["donker"],note:"Amberkleurige trappist, vernoemd naar broeder Isidorus, de eerste brouwer van de Koningshoeven. Karamel en een zacht bittertje."},
  // BLONDE BIEREN
  {id:"delirium",n:"Delirium Tremens",c:"blond",p:[P(5.75)],abv:8.5,st:"Sterk blond",br:"Brouwerij Huyghe",pl:"Melle",lc:"BE",ll:[51.0,3.8],col:"#eab54a",g:"tulip",pr:[2,3,3,3,0,0],m:[],note:"Fruitig en kruidig blond uit de beschilderde fles. Drinkt gevaarlijk makkelijk voor 8,5%."},
  {id:"tripelhop",n:"Duvel Tripel Hop",c:"blond",p:[P(5.75)],d:1,abv:9.5,st:"Hoppig sterk blond",br:"Duvel Moortgat",pl:"Breendonk",lc:"BE",ll:[51.05,4.33],col:"#f1c254",g:"tulip",pr:[5,2,3,3,0,0],m:["hop"],note:"Duvel met een extra hopsoort die per editie wisselt. Krachtig bitter, citrus en 9,5%."},
- {id:"viven",n:"Viven Champagner Weisse",c:"blond",p:[P(5.5)],abv:4.8,st:"Weizen",br:"Viven",pl:null,lc:"BE",ll:null,col:"#f0c35b",cloudy:1,g:"weizen",pr:[1,2,2,3,1,0],m:["fris"],note:"Lichte weizen met een prik als champagne. Zacht, fris en maar 4,8%."},
+ {id:"viven",n:"Viven Champagner Weisse",c:"blond",p:[P(5.5)],abv:4.8,st:"Weizen",br:"Viven",pl:null,lc:null,ll:null,col:"#f0c35b",cloudy:1,g:"weizen",pr:[1,2,2,3,1,0],m:["fris"],note:"Lichte weizen met een prik als champagne. Zacht, fris en maar 4,8%."},
  {id:"duvel",n:"Duvel",c:"blond",p:[P(5.5)],d:1,abv:8.5,st:"Sterk blond",br:"Duvel Moortgat",pl:"Breendonk",lc:"BE",ll:[51.05,4.33],col:"#f3c24c",foamH:11,g:"tulip",pr:[3,1,3,2,0,0],m:["hop"],note:"Het Belgische sterk blond. Droog, lange bittere afdronk en een kraag als een wolk."},
  {id:"duvel666",n:"Duvel 6,66",c:"blond",p:[P(5.25)],abv:6.66,st:"Blond",br:"Duvel Moortgat",pl:"Breendonk",lc:"BE",ll:[51.05,4.33],col:"#e8b043",g:"tulip",pr:[4,1,2,2,0,0],m:["hop","fris"],note:"Het lichtere broertje van Duvel: 6,66%, droog gehopt, citrus en kruid."},
- {id:"hoegaardengc",n:"Hoegaarden Grand Cru",c:"blond",p:[P(5.25)],guess:1,abv:8.5,st:"Sterk wit",br:"Hoegaarden",pl:"Hoegaarden",lc:"BE",ll:[50.776,4.887],col:"#eaa83a",cloudy:1,g:"tumbler",pr:[1,3,4,3,0,0],m:[],note:"De zware variant uit Hoegaarden. Sinaasappelschil, koriander en een zoete gloed van 8,5%."},
+ {id:"hoegaardengc",n:"Hoegaarden Grand Cru",c:"blond",p:null,abv:8.5,st:"Sterk wit",br:"Hoegaarden",pl:"Hoegaarden",lc:"BE",ll:[50.776,4.887],col:"#eaa83a",cloudy:1,g:"tumbler",pr:[1,3,4,3,0,0],m:[],note:"De zware variant uit Hoegaarden. Sinaasappelschil, koriander en een zoete gloed van 8,5%."},
  {id:"kwak",n:"Pauwels Kwak",c:"blond",p:[P(5.25)],d:1,abv:8.4,st:"Amber",br:"Brouwerij Bosteels",pl:"Buggenhout",lc:"BE",ll:[51.016,4.2],col:"#b85d1a",g:"kwak",pr:[1,4,4,2,0,2],m:[],note:"Het bier van het glas met de houten houder, volgens de overlevering bedacht voor koetsiers die op de bok bleven zitten. Karamel, zoet en rond."},
  {id:"chouffe",n:"La Chouffe",c:"blond",p:[P(5.25)],d:1,abv:8,st:"Blond",br:"Brasserie d'Achouffe",pl:"Achouffe",lc:"BE",ll:[50.15,5.75],col:"#e3a03b",cloudy:1,g:"tulip",pr:[2,2,3,3,0,0],m:[],note:"Ongefilterd blond uit de Ardennen. Fruitig, licht kruidig, met een vleugje koriander."},
- {id:"barbar",n:"Barbar",c:"blond",p:[P(5.25)],guess:1,abv:8,st:"Honingbier",br:"Brasserie Lefebvre",pl:"Quenast",lc:"BE",ll:[50.67,4.16],col:"#d9922e",g:"chalice",pr:[1,4,3,2,0,0],m:[],note:"Blond met honing en kruiden. Zoet, warm en sterker dan het smaakt."},
+ {id:"barbar",n:"Barbar",c:"blond",p:null,abv:8,st:"Honingbier",br:"Brasserie Lefebvre",pl:"Quenast",lc:"BE",ll:[50.67,4.16],col:"#d9922e",g:"chalice",pr:[1,4,3,2,0,0],m:[],note:"Blond met honing en kruiden. Zoet, warm en sterker dan het smaakt."},
  // TRIPELS
  {id:"karmeliet",n:"Tripel Karmeliet",c:"tripel",p:[P(5.25)],abv:8.4,st:"Tripel",br:"Brouwerij Bosteels",pl:"Buggenhout",lc:"BE",ll:[51.016,4.2],col:"#e9ad3a",g:"tulip",pr:[2,3,3,3,0,0],m:[],note:"Tripel van drie granen: gerst, tarwe en haver. Romig, citrusachtig en licht voor zijn gewicht."},
  {id:"westmalletripel",n:"Westmalle Tripel",c:"tripel",p:[P(5.25)],d:1,abv:9.5,st:"Tripel",br:"Abdij van Westmalle",pl:"Westmalle",lc:"BE",ll:[51.287,4.689],col:"#efbf4a",g:"chalice",tr:1,pr:[3,2,3,2,0,0],m:["hop"],note:"De tripel waar de stijl mee begon. Strak, kruidig en droog, met een bittere afdronk."},
@@ -315,7 +317,7 @@ const B=[
  {id:"kasteelrouge",n:"Kasteel Rouge",c:"fruit",p:[P(5.25)],abv:8,st:"Kriek op donker",br:"Van Honsebrouck",pl:"Izegem",lc:"BE",ll:[50.914,3.214],col:"#6e1522",foam:"#f0c9cf",g:"chalice",pr:[0,5,4,5,1,1],m:["fruit"],note:"Kasteel Donker met kersen. Zoet, dieprood en 8%: dessert in een bokaal."},
  {id:"boonkriek",n:"Boon Kriek",c:"fruit",p:[P(4.75)],abv:4,st:"Kriek (lambiek)",br:"Brouwerij Boon",pl:"Lembeek",lc:"BE",ll:[50.71,4.22],col:"#a3172b",foam:"#f3cdd3",g:"flute",pr:[1,3,2,5,3,0],m:["fruit","fris"],note:"Lambiek die op echte kersen is gerijpt. Zurig, fris en droger dan je verwacht."},
  {id:"wittekerke",n:"Wittekerke Rosé",c:"fruit",p:[P(4.75)],d:1,abv:4.3,st:"Wit met framboos",br:"Brouwerij De Brabandere",pl:"Bavikhove",lc:"BE",ll:[50.87,3.31],col:"#e98aa0",foam:"#fbe3ea",cloudy:1,g:"ballon",pr:[0,5,2,5,1,0],m:["fruit","fris"],note:"Roze witbier met framboos. Zoet als de frambozensnoepjes van vroeger."},
- {id:"fruitesse",n:"Liefmans Fruitesse",c:"fruit",p:[P(4.75)],d:1,abv:3.8,st:"Fruitbier",br:"Liefmans",pl:"Oudenaarde",lc:"BE",ll:[50.845,3.604],col:"#b0213a",foam:"#f5cfd6",foamH:4,ice:1,g:"ballon",pr:[0,5,1,5,1,0],m:["fruit","fris"],note:"Licht en zoet fruitbier met kers en rood fruit. Het lekkerst met ijs, zo wordt het ook geschonken."},
+ {id:"fruitesse",n:"Liefmans Fruitesse",c:"fruit",p:[P(4.75)],d:1,abv:3.8,st:"Fruitbier",br:"Liefmans",pl:"Oudenaarde",lc:"BE",ll:[50.845,3.604],col:"#b0213a",foam:"#f5cfd6",foamH:4,ice:1,g:"ballon",pr:[0,5,1,5,1,0],m:["fruit","fris"],note:"Licht en zoet fruitbier met kers en rood fruit. Lekker met ijs."},
  // GLUTENVRIJ
  {id:"bavariagf",n:"Bavaria Glutenvrij",c:"gluten",p:[P(4.75)],abv:5,st:"Glutenvrije pils",br:"Bavaria",pl:"Lieshout",lc:"NL",ll:[51.517,5.597],col:"#f2cc5a",g:"vaas",pr:[2,1,1,1,0,0],m:["fris"],note:"Glutenvrije pils, ontwikkeld samen met de Nederlandse Coeliakie Vereniging. Fris met een licht hopbittertje."},
  // ALCOHOLVRIJ
@@ -449,7 +451,7 @@ let state={q:"",mood:null};
 
 /* ---------- plafond met viltjes ---------- */
 (function ceiling(){
- const el=$("#ceiling");const words=["PROOST","SANTÉ","SCHOL","SLÁINTE","SKÅL","CHEERS","GEZONDHEID","NOG EENTJE?","RONDJE!","PRINSENBEEK","PROSIT","GROENSTRAAT","OP DE LAT","TAPPEN"];
+ const el=$("#ceiling");const words=["PROOST","SANTÉ","SCHOL","SLÁINTE","SKÅL","CHEERS","GEZONDHEID","NOG EENTJE?","RONDJE!","PRINSENBEEK","PROSIT","GROENSTRAAT","SALUD","TAPPEN"];
  const pal=[["#e9dcc2","#7a2a1a"],["#1f3a2b","#e9c46a"],["#b8333f","#f6e7cf"],["#18263f","#f2b84b"],["#f2b84b","#3a1a0c"],["#efe7d6","#1b3d6e"],["#5a1e12","#f1d9a6"]];
  const r=rng("viltjes");let html="";
  const n=Math.max(10,Math.round(window.innerWidth/80));
@@ -459,7 +461,7 @@ let state={q:"",mood:null};
   const hex=r()<.18;
   const shape=hex?`<polygon points="32,2 58,17 58,47 32,62 6,47 6,17" fill="${bg}"/><polygon points="32,8 52,20 52,44 32,56 12,44 12,20" fill="none" stroke="${fg}" stroke-width="1.5"/>`
    :`<circle cx="32" cy="32" r="30" fill="${bg}"/><circle cx="32" cy="32" r="25" fill="none" stroke="${fg}" stroke-width="1.5" stroke-dasharray="${r()<.5?"3 3":"0"}"/>`;
-  html+=`<div class="coaster" style="left:${left}%;top:${top}px;transform:rotate(${rot}deg);--r:${rot}deg"><svg viewBox="0 0 64 64">${shape}<text x="32" y="${w.length>9?35:36}" text-anchor="middle" font-family="Archivo,Arial Narrow,sans-serif" font-stretch="70%" font-weight="800" font-size="${w.length>9?7:9.5}" fill="${fg}" letter-spacing=".5">${w}</text></svg></div>`;
+  html+=`<div class="coaster" style="left:${left}%;top:${top}px;transform:rotate(${rot}deg);--r:${rot}deg"><svg viewBox="0 0 64 64">${shape}<text x="32" y="${w.length>9?35:36}" text-anchor="middle" font-family="Archivo,Arial Narrow,sans-serif" font-stretch="70%" font-weight="800" font-size="${w.length>7?7.5:9.5}" fill="${fg}" ${w.length>5?'textLength="44" lengthAdjust="spacingAndGlyphs"':''}>${w}</text></svg></div>`;
  }
  el.innerHTML=html;
 })();
@@ -469,7 +471,7 @@ let state={q:"",mood:null};
  const h=$("#h1");h.innerHTML=[..."Pallieter"].map((c,i)=>`<span class="ch" aria-hidden="true" style="--i:${i}">${c}</span>`).join("");
  const taps=B.filter(b=>b.c==="tap").length;
  const nearest=B.filter(b=>b.ll).map(b=>({b,k:km(b.ll)})).sort((a,b)=>a.k-b.k)[0];
- $("#stats").innerHTML=`<span><b>${B.length}</b> bieren</span><span><b>${taps}</b> van de tap</span><span><b>${SNACKS.length}</b> snacks</span><span>dichtstbij: <b>${esc(nearest.b.pl)}</b> · ${nearest.k} km</span>`;
+ $("#stats").innerHTML=`<span><b>${B.length}</b> bieren</span><span><b>${taps}</b> van de tap</span><span>dichtstbij: <b>${esc(nearest.b.pl)}</b> · ${nearest.k} km</span>`;
 })();
 
 /* ---------- moods ---------- */
@@ -480,12 +482,12 @@ $("#moods").addEventListener("click",e=>{const btn=e.target.closest("[data-mood]
 function matches(b,q){if(!q)return true;const hay=[b.n,b.st,b.br,b.pl||"",LAND[b.lc]||"",b.note,b.tr?"trappist":""].join(" ").toLowerCase();return q.split(/\s+/).every(w=>hay.includes(w));}
 function priceHTML(b){
  if(!b.p)return `<span class="price unk lt">aan de<br>bar</span>`;
- const mark=b.d?`<span class="ditto" title="Op het bord als „ : zelfde prijs als de regel erboven">„</span>`:(b.guess?`<span class="ditto" title="Prijs niet goed leesbaar op het bord, afgeleid van de regel erboven">?</span>`:"");
+ const mark="";
  if(b.p.length>1)return `<span class="price lt">${b.p.map(x=>eur(x.v)).join(" · ")}<small>${b.p.map(x=>x.l).join(" · ")}</small></span>`;
  return `<span class="price lt">${mark}${eur(b.p[0].v)}</span>`;
 }
 function rowHTML(b,q){
- const meta=[b.st,pct(b.abv),b.pl||(b.lc?LAND[b.lc]:null)].filter(Boolean).join(" · ");
+ const meta=[b.st,b.abv==null?null:pct(b.abv),b.pl||(b.lc?LAND[b.lc]:null)].filter(Boolean).join(" · ");
  return `<div class="row" data-id="${b.id}">
   <button class="open" type="button" data-open="${b.id}" aria-label="${esc(b.n)}, open proefkaart">
    ${glass(b)}
@@ -523,7 +525,7 @@ function render(){
   const pool=B.filter(b=>mood.has(b)&&matches(b,q)).sort((a,b)=>mood.s(b)-mood.s(a)).slice(0,3);
   if(pool.length){
    tip.hidden=false;
-   tip.innerHTML=`<div class="felt"><h2 class="lt">De barman tipt · ${esc(mood.t)}</h2><p>${esc(mood.d)}</p><div class="tips">${pool.map((b,i)=>`<button class="tipcard" type="button" data-open="${b.id}">${glass(b,{bubbles:3})}<span><span class="lt"><span class="rank">${i+1}.</span> ${esc(b.n)}</span><small>${esc(b.st)} · ${pct(b.abv)}</small></span></button>`).join("")}</div></div>`;
+   tip.innerHTML=`<div class="felt"><h2 class="lt">De barman tipt · ${esc(mood.t)}</h2><p>${esc(mood.d)}</p><div class="tips">${pool.map((b,i)=>`<button class="tipcard" type="button" data-open="${b.id}">${glass(b,{bubbles:3})}<span><span class="lt"><span class="rank">${i+1}.</span> ${esc(b.n)}</span><small>${esc(b.st)}${b.abv==null?"":" · "+pct(b.abv)}</small></span></button>`).join("")}</div></div>`;
   }else tip.hidden=true;
  }else tip.hidden=true;
 }
@@ -539,8 +541,8 @@ function openBeer(id,{shuffle=false}={}){
  const k=km(b.ll);
  const a=abvN(b);
  const [sid,why]=pairing(b);const sn=SNACKS.find(s=>s.id===sid);
- const sizes=b.p?b.p.map(x=>`<span class="sizebtn">${x.l?x.l+" · ":""}${eur(x.v)}</span>`).join(""):`<span class="sizebtn ghost">Prijs aan de bar</span>`;
- const priceNote=b.d?`<p class="unkp">Op het bord met „ geschreven: zelfde prijs als de regel erboven.</p>`:b.guess?`<p class="unkp">Prijs niet goed leesbaar op het bord; afgeleid van de regel erboven.</p>`:(!b.p?`<p class="unkp">Op het bord staat bij dit bier geen prijs.</p>`:"");
+ const sizes=b.p?b.p.map(x=>`<span class="sizebtn">${x.l?x.l+" · ":""}${eur(x.v)}</span>`).join(""):`<span class="sizebtn ghost">Prijs: vraag aan de bar</span>`;
+ const priceNote="";
  $("#modalRoot").innerHTML=`<div class="scrim" id="scrim">
   <div class="sheet frame" role="dialog" aria-modal="true" aria-labelledby="mt">
    <div class="felt">
@@ -549,12 +551,12 @@ function openBeer(id,{shuffle=false}={}){
     <div class="info">
      <div class="kick lt">${esc(boardName(b.c))}${b.tr?" · trappist":""}</div>
      <h3 class="lt" id="mt">${esc(b.n)}</h3>
-     <p class="by">${esc(b.br)}${b.pl?" · "+esc(b.pl):""}${b.lc?" · "+LAND[b.lc]:""}</p>
+     <p class="by">${[b.br,b.pl,b.lc?LAND[b.lc]:null].filter(Boolean).map(esc).join(" · ")}</p>
      <p class="note">${esc(b.note)}</p>
      <div class="facts">
-      <div class="fact"><span class="lt">Alcohol</span><b>${pct(b.abv)}</b><div class="meter"><i style="--w:${a===null?0:Math.min(100,a/12*100)}%"></i></div></div>
+      ${b.abv==null?"":`<div class="fact"><span class="lt">Alcohol</span><b>${pct(b.abv)}</b><div class="meter"><i style="--w:${Math.min(100,a/12*100)}%"></i></div></div>`}
       <div class="fact"><span class="lt">Stijl</span><b style="font-size:1rem">${esc(b.st)}</b></div>
-      <div class="fact"><span class="lt">Reisde naar je glas</span><b>${k===null?"onbekend":k+" km"}</b>${k!==null?`<div style="font-size:.75rem;color:var(--letter-dim);font-style:italic">hemelsbreed vanaf ${esc(b.pl)}</div>`:""}</div>
+      ${k===null?"":`<div class="fact"><span class="lt">Afstand brouwerij</span><b>${k} km</b><div style="font-size:.75rem;color:var(--letter-dim);font-style:italic">hemelsbreed, vanaf ${esc(b.pl)}</div></div>`}
      </div>
      <div class="profile">${b.pr.map((v,i)=>`<div class="prow"><span class="lt">${LABELS[i]}</span><span class="dots" style="--c:${PCOL[i]}">${[0,1,2,3,4].map(j=>`<i data-on="${j<v?1:0}" style="transition-delay:${(.5+i*.08+j*.05).toFixed(2)}s"></i>`).join("")}</span></div>`).join("")}</div>
      <div class="pair">${snackIcon(sn.ic)}<p><span class="lt">Erbij: ${esc(sn.n)} ${eur(sn.v)}</span><br>${esc(why)}</p></div>
@@ -584,7 +586,7 @@ document.addEventListener("keydown",e=>{
   if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus();}else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus();}}
  if(e.key==="/"&&document.activeElement!==$("#zoek")&&!$("#scrim")){e.preventDefault();$("#zoek").focus();}
 });
-function glassName(g){return({vaas:"Vaasje",tulip:"Tulpglas",chalice:"Bokaal",weizen:"Weizenglas",pint:"Tulip pint",tumbler:"Witbierglas",teku:"Proefglas",flute:"Fluitglas",ballon:"Ballonglas",kwak:"Kwakglas in houten houder"})[g]||"Glas";}
+function glassName(g){return({vaas:"Vaasje",tulip:"Tulpglas",chalice:"Bokaal",weizen:"Weizenglas",pint:"Pintglas",tumbler:"Witbierglas",teku:"Proefglas",flute:"Fluitglas",ballon:"Ballonglas",kwak:"Kwakglas in houten houder"})[g]||"Glas";}
 function boardName(c){return(BOARDS.find(x=>x.c===c)||{}).t||"";}
 
 $("#surprise").addEventListener("click",()=>{
