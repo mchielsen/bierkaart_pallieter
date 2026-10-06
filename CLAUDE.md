@@ -12,7 +12,7 @@ Gasten openen de kaart via een geprinte QR-code die naar dat adres wijst.
 - Geen bestel-, reken- of "lat"-functie toevoegen. De kaart is alleen om te bekijken.
 - De letterborden in het café zijn de bron. Prijzen en bieren komen van het bord of van de eigenaar.
 - Niets verzinnen. Alcoholpercentage, brouwerij en plaats alleen invullen als het via een bron is te controleren. Is iets niet te vinden, laat het veld leeg (`abv:null`, `br:""`, `pl:null`, `lc:null`, `ll:null`). De kaart toont lege velden dan niet.
-- Is een prijs onbekend of twijfelachtig, gebruik `p:null`. De kaart toont dan "aan de bar".
+- Elk bier heeft een prijs. Bieren zonder prijs bestaan niet. Is de prijs niet gegeven of twijfelachtig, vraag er dan eerst om voordat je het bier toevoegt of wijzigt. Gebruik nooit `p:null` en verzin of schat nooit een prijs.
 - Geen interne notities in teksten die gasten zien (dus niet "kon ik niet vinden" of "op het bord als ...").
 
 ## Hoe de kaart in elkaar zit
@@ -28,7 +28,7 @@ Alles staat in één bestand: `index.html`. De bieren staan in de lijst `const B
 | `id` | unieke korte naam, kleine letters, geen spaties |
 | `n` | naam zoals gasten hem zien |
 | `c` | bord: `tap`, `wissel` (wisselkrat), `donker`, `blond`, `tripel`, `fruit`, `gluten`, `nul` (alcoholvrij) |
-| `p` | prijs(zen): `[P(5.5)]`, of met maten `[P(4.5,"33 cl"),P(6.75,"50 cl")]`, of `null` |
+| `p` | prijs(zen), altijd verplicht: `[P(5.5)]`, of met maten `[P(4.5,"33 cl"),P(6.75,"50 cl")]` |
 | `abv` | alcoholpercentage als getal, of `null` |
 | `st` | stijl, bijvoorbeeld `Tripel`, `Weizen`, `Double IPA` |
 | `br`, `pl`, `lc` | brouwerij, plaats, land (`NL`, `BE`, `IE`) |
