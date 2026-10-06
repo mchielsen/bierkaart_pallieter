@@ -103,9 +103,10 @@ button{font:inherit;color:inherit}
 .tip h2{margin:0;font-size:1.05rem}
 .tip p{margin:.2em 0 12px;font-style:italic;color:var(--note)}
 .tips{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:12px}
-.tipcard{display:grid;grid-template-columns:44px 1fr;gap:10px;align-items:center;text-align:left;cursor:pointer;background:#ffffff07;border:1px solid #ffffff14;border-radius:6px;padding:8px 10px}
+.tipcard{display:grid;grid-template-columns:44px minmax(0,1fr) auto;gap:10px;align-items:center;text-align:left;cursor:pointer;background:#ffffff07;border:1px solid #ffffff14;border-radius:6px;padding:8px 10px}
 .tipcard:hover{background:#ffffff10}
 .tipcard .lt{font-size:.95rem;line-height:1.1}
+.tipcard .price{font-size:.95rem}
 .tipcard small{display:block;color:var(--letter-dim);font-size:.8rem;font-style:italic}
 .rank{color:var(--amber)}
 
@@ -531,7 +532,7 @@ function render(){
   const pool=B.filter(b=>mood.has(b)&&matches(b,q)).sort((a,b)=>mood.s(b)-mood.s(a)).slice(0,3);
   if(pool.length){
    tip.hidden=false;
-   tip.innerHTML=`<div class="felt"><h2 class="lt">De barman tipt · ${esc(mood.t)}</h2><p>${esc(mood.d)}</p><div class="tips">${pool.map((b,i)=>`<button class="tipcard" type="button" data-open="${b.id}">${glass(b,{bubbles:3})}<span><span class="lt"><span class="rank">${i+1}.</span> ${esc(b.n)}</span><small>${esc(b.st)}${b.abv==null?"":" · "+pct(b.abv)}</small></span></button>`).join("")}</div></div>`;
+   tip.innerHTML=`<div class="felt"><h2 class="lt">De barman tipt · ${esc(mood.t)}</h2><p>${esc(mood.d)}</p><div class="tips">${pool.map((b,i)=>`<button class="tipcard" type="button" data-open="${b.id}">${glass(b,{bubbles:3})}<span><span class="lt"><span class="rank">${i+1}.</span> ${esc(b.n)}</span><small>${esc(b.st)}${b.abv==null?"":" · "+pct(b.abv)}</small></span>${priceHTML(b)}</button>`).join("")}</div></div>`;
   }else tip.hidden=true;
  }else tip.hidden=true;
 }
