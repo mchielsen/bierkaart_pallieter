@@ -1,0 +1,26 @@
+name: Dagelijkse backup
+
+# Elke nacht om ongeveer 03:00 (Nederlandse tijd) wordt de kaart van dat moment
+# vastgelegd als tag "backup-JJJJ-MM-DD" en als branch "backup-gisteren".
+on:
+  schedule:
+    - cron: "7 1 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  backup:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+      - name: Backup vastleggen
+        run: |
+          DATUM=$(TZ=Europe/Amsterdam date +%F)
+          git tag -f "backup-$DATUM"
+          git push -f origin "backup-$DATUM"
+          git push -f origin HEAD:refs/heads/backup-gisteren

@@ -44,6 +44,14 @@ Alles staat in één bestand: `index.html`. De bieren staan in de lijst `const B
 
 Snacks staan in `const SNACKS=[ ... ]` (`n` naam, `q` aantal, `v` prijs).
 
+## Backups en terugzetten
+
+- Elke wijziging blijft bewaard in de geschiedenis van `main`. Gebruik nooit `git push --force` op `main` en herschrijf de geschiedenis niet.
+- Elke nacht maakt de GitHub Action `Dagelijkse backup` een kopie: de tag `backup-JJJJ-MM-DD` en de branch `backup-gisteren`.
+- Terugzetten naar gisteren: `git checkout backup-gisteren -- index.html`, controleren, committen ("Kaart teruggezet naar backup van ...") en pushen naar `main`.
+- Terugzetten naar een bepaalde dag: hetzelfde met de tag, bijvoorbeeld `git checkout backup-2026-10-06 -- index.html`.
+- Maak bij twijfel over een grote wijziging eerst een extra tag, bijvoorbeeld `voor-wijziging-JJJJ-MM-DD`.
+
 ## Na elke wijziging
 
 1. Controleer dat het script nog werkt (bijvoorbeeld `node --check` op de inhoud van de `<script>`).
