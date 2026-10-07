@@ -27,7 +27,7 @@ Alles staat in één bestand: `index.html`. De bieren staan in de lijst `const B
 | - | - |
 | `id` | unieke korte naam, kleine letters, geen spaties |
 | `n` | naam zoals gasten hem zien |
-| `c` | bord: `tap`, `wissel` (wisselkrat), `donker`, `blond`, `tripel`, `fruit`, `gluten`, `nul` (alcoholvrij) |
+| `c` | bord: `tap`, `wisseltap` (nu op de wisseltap), `wissel` (wisselkrat), `donker`, `blond`, `tripel`, `fruit`, `gluten`, `nul` (alcoholvrij) |
 | `p` | prijs(zen), altijd verplicht: `[P(5.5)]`, of met maten `[P(4.5,"33 cl"),P(6.75,"50 cl")]` |
 | `abv` | alcoholpercentage als getal, of `null` |
 | `st` | stijl, bijvoorbeeld `Tripel`, `Weizen`, `Double IPA` |

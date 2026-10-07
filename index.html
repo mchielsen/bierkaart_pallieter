@@ -288,9 +288,10 @@ const B=[
  {id:"weizener",n:"Pallie Weizener",c:"tap",p:[P(4.5,"33 cl"),P(6.75,"50 cl")],abv:5,st:"Weizen",br:"Eigen bier van Pallieter",pl:null,lc:null,ll:null,col:"#f2b445",cloudy:1,g:"weizen",pr:[1,2,2,3,1,0],m:["fris"],note:"Het eigen bier van Pallieter, van de tap in een glas van 33 of 50 cl. Een weizen is troebel en zacht, vaak met tonen van banaan en kruidnagel."},
  {id:"wittetrappist",n:"La Trappe Witte Trappist",c:"tap",p:[P(5,"33 cl"),P(8.5,"50 cl")],abv:5.5,st:"Witbier",br:"La Trappe",pl:"Berkel-Enschot",lc:"NL",ll:[51.585,5.14],col:"#f4d47c",cloudy:1,g:"tumbler",pr:[1,2,2,3,1,0],m:["fris"],tr:1,note:"Witbier met het trappistenlabel, uit de Koningshoeven bij Tilburg. Citrus, kruidig en zacht fris."},
  {id:"guinness",n:"Guinness",c:"tap",p:[P(7)],abv:4.2,st:"Dry stout",br:"St. James's Gate",pl:"Dublin",lc:"IE",ll:[53.343,-6.267],col:"#1b0d07",foam:"#ead9b6",foamH:9,sink:1,g:"pint",pr:[3,1,2,0,0,5],m:["donker"],note:"Droge stout uit Dublin. Geroosterde gerst, koffie en een romige kraag. Kijk naar de belletjes: die zakken naar beneden."},
- {id:"sournsweet",n:"Jopen Sour 'n Sweet",c:"tap",p:[P(5.75)],abv:4.5,st:"Fruited sour",br:"Jopen × Vault City",pl:"Haarlem",lc:"NL",ll:[52.381,4.636],col:"#c2303f",foam:"#f6d6db",g:"teku",pr:[0,4,2,5,4,0],m:["fruit","fris"],note:"Samenwerking tussen Jopen en het Schotse Vault City. Framboos, aardbei, braam en kers, met citroen voor het frisse zuur."},
- {id:"fruitbomb",n:"Moersleutel Fruit Bomb",c:"tap",p:[P(5.75)],abv:8,st:"Double IPA",br:"Moersleutel",pl:"Alkmaar",lc:"NL",ll:[52.632,4.748],col:"#eda43a",cloudy:1,g:"teku",pr:[3,2,4,5,0,0],m:["hop","fruit"],note:"Double IPA die precies doet wat de naam zegt: een vracht tropisch fruit en een stevige 8%."},
- {id:"dipalove",n:"Jopen DIPA Love",c:"tap",p:[P(5.75)],abv:8.5,st:"Double IPA",br:"Jopen",pl:"Haarlem",lc:"NL",ll:[52.381,4.636],col:"#f2a838",cloudy:1,g:"teku",pr:[3,2,4,5,0,0],m:["hop","fruit"],note:"Tropische double IPA met passievrucht, mango en limoen. Zacht in de mond, schone afdronk zonder bittere uithaal."},
+ // NU OP DE WISSELTAP
+ {id:"sournsweet",n:"Jopen Sour 'n Sweet",c:"wisseltap",p:[P(5.75)],abv:4.5,st:"Fruited sour",br:"Jopen × Vault City",pl:"Haarlem",lc:"NL",ll:[52.381,4.636],col:"#c2303f",foam:"#f6d6db",g:"teku",pr:[0,4,2,5,4,0],m:["fruit","fris"],note:"Samenwerking tussen Jopen en het Schotse Vault City. Framboos, aardbei, braam en kers, met citroen voor het frisse zuur."},
+ {id:"fruitbomb",n:"Moersleutel Fruit Bomb",c:"wisseltap",p:[P(5.75)],abv:8,st:"Double IPA",br:"Moersleutel",pl:"Alkmaar",lc:"NL",ll:[52.632,4.748],col:"#eda43a",cloudy:1,g:"teku",pr:[3,2,4,5,0,0],m:["hop","fruit"],note:"Double IPA die precies doet wat de naam zegt: een vracht tropisch fruit en een stevige 8%."},
+ {id:"dipalove",n:"Jopen DIPA Love",c:"wisseltap",p:[P(5.75)],abv:8.5,st:"Double IPA",br:"Jopen",pl:"Haarlem",lc:"NL",ll:[52.381,4.636],col:"#f2a838",cloudy:1,g:"teku",pr:[3,2,4,5,0,0],m:["hop","fruit"],note:"Tropische double IPA met passievrucht, mango en limoen. Zacht in de mond, schone afdronk zonder bittere uithaal."},
  // DONKERE BIEREN
  {id:"carolus",n:"Gouden Carolus",c:"donker",p:[P(5.75)],abv:8.5,st:"Donker sterk",br:"Het Anker",pl:"Mechelen",lc:"BE",ll:[51.028,4.48],col:"#5c2611",foam:"#efdcbc",g:"tulip",pr:[1,4,4,3,0,3],m:["donker"],note:"Mechels donker, genoemd naar keizer Karel V. Karamel, rozijnen en een warme, zoete afdronk."},
  {id:"bernardus",n:"St. Bernardus Abt 12",c:"donker",p:[P(5.75)],d:1,abv:10,st:"Quadrupel",br:"St. Bernardus",pl:"Watou",lc:"BE",ll:[50.858,2.618],col:"#3f170b",foam:"#e8d3ad",g:"chalice",pr:[1,4,5,4,0,3],m:["donker"],note:"Een van de meest geroemde quadrupels van België. Pruim, vijg, toffee en kruiden; de 10% voel je pas later."},
@@ -343,7 +344,7 @@ const SNACKS=[
 ];
 
 const BOARDS=[
- {c:"tap",t:"Van de tap"},{c:"wissel",t:"Wisselkrat"},{c:"donker",t:"Donkere bieren"},{c:"blond",t:"Blonde bieren"},
+ {c:"tap",t:"Van de tap"},{c:"wisseltap",t:"Nu op de Wisseltap"},{c:"wissel",t:"Wisselkrat"},{c:"donker",t:"Donkere bieren"},{c:"blond",t:"Blonde bieren"},
  {c:"tripel",t:"Tripels"},{c:"fruit",t:"Fruitbieren"},{c:"gluten",t:"Glutenvrij"},
  {c:"nul",t:"Alcoholvrij"},{c:"snack",t:"Even snacken"}
 ];
@@ -360,7 +361,7 @@ const MOODS=[
  {k:"zwaar",t:"Zwaar spul",c:"#e06a2c",d:"Negen procent en hoger. Rustig aan drinken.",has:b=>(abvN(b)||0)>=9,s:b=>abvN(b)},
  {k:"zacht",t:"Rustig aan",c:"#9ec7d6",d:"Vijf procent of minder, of helemaal zonder. Voor de BOB of de laatste ronde.",has:b=>abvN(b)!==null&&abvN(b)<=5,s:b=>-abvN(b)},
  {k:"trappist",t:"Echte trappist",c:"#c9a46a",d:"Gebrouwen binnen de muren van een trappistenabdij.",has:b=>!!b.tr,s:b=>b.pr[2]+b.pr[5]},
- {k:"tap",t:"Vers van de tap",c:"#eaa83d",d:"Wat er nu aan de kranen hangt.",has:b=>b.c==="tap",s:b=>b.pr.reduce((a,x)=>a+x,0)},
+ {k:"tap",t:"Vers van de tap",c:"#eaa83d",d:"Wat er nu aan de kranen hangt.",has:b=>b.c==="tap"||b.c==="wisseltap",s:b=>b.pr.reduce((a,x)=>a+x,0)},
  {k:"budget",t:"Tot een vijfje",c:"#e8e1d0",d:"Alles van vijf euro of minder.",has:b=>minPrice(b)!==null&&minPrice(b)<=5,s:b=>-minPrice(b)}
 ];
 
@@ -475,7 +476,7 @@ let state={q:"",mood:null};
 /* ---------- hero ---------- */
 (function hero(){
  const h=$("#h1");h.innerHTML=[..."Pallieter"].map((c,i)=>`<span class="ch" aria-hidden="true" style="--i:${i}">${c}</span>`).join("");
- const taps=B.filter(b=>b.c==="tap").length;
+ const taps=B.filter(b=>b.c==="tap"||b.c==="wisseltap").length;
  const nearest=B.filter(b=>b.ll).map(b=>({b,k:km(b.ll)})).sort((a,b)=>a.k-b.k)[0];
  $("#stats").innerHTML=`<span><b>${B.length}</b> bieren</span><span><b>${taps}</b> van de tap</span><span>dichtstbij: <b>${esc(nearest.b.pl)}</b> · ${nearest.k} km</span>`;
 })();
