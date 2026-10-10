@@ -41,6 +41,8 @@ Alles staat in één bestand: `index.html`. De bieren staan in de lijst `const B
 | `m` | stemmingen: `fris`, `donker`, `fruit`, `hop` |
 | `tr` | optioneel `1` bij een erkende trappist |
 | `note` | korte beschrijving voor gasten, 1–3 zinnen |
+| `ar`, `sm`, `af` | optioneel: aroma, smaak en afdronk, elk één korte zin, alleen uit een bron (brouwerij, etiket, slijterij) |
+| `ig` | optioneel: ingrediënten zoals op etiket of bij de brouwerij vermeld |
 
 Snacks staan in `const SNACKS=[ ... ]` (`n` naam, `q` aantal, `v` prijs).
 
