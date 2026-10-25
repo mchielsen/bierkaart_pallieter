@@ -11,7 +11,7 @@
 <circle cx="600" cy="600" r="556" fill="none" stroke="#f0bf3c" stroke-width="3"/>
 <circle cx="600" cy="600" r="420" fill="url(#felt)" stroke="#f0bf3c" stroke-width="8"/>
 <text font-family="Liberation Serif" font-weight="bold" font-size="92" letter-spacing="14" fill="#f0bf3c" text-anchor="middle"><textPath xlink:href="#arcTop" startOffset="50%">BIERCAFÉ</textPath></text>
-<text font-family="Liberation Serif" font-weight="bold" font-size="56" letter-spacing="12" fill="#f6efe2" text-anchor="middle"><textPath xlink:href="#arcBot" startOffset="50%">PRINSENBEEK</textPath></text>
+<text font-family="Liberation Serif" font-weight="bold" font-size="42" letter-spacing="3" fill="#f6efe2" text-anchor="middle"><textPath xlink:href="#arcBot" startOffset="50%">GROENSTRAAT 23 · PRINSENBEEK</textPath></text>
 
 <polygon points="110.0,588.0 115.4,602.5 130.9,603.2 118.8,612.9 122.9,627.8 110.0,619.2 97.1,627.8 101.2,612.9 89.1,603.2 104.6,602.5" fill="#f0bf3c"/>
 <polygon points="1090.0,588.0 1095.4,602.5 1110.9,603.2 1098.8,612.9 1102.9,627.8 1090.0,619.2 1077.1,627.8 1081.2,612.9 1069.1,603.2 1084.6,602.5" fill="#f0bf3c"/>
