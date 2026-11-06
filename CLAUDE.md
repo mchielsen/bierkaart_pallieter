@@ -40,6 +40,7 @@ Alles staat in één bestand: `index.html`. De bieren staan in de lijst `const B
 | `pr` | smaakprofiel 0–5: `[bitter, zoet, vol, fruit, zuur, geroosterd]` |
 | `m` | stemmingen: `fris`, `donker`, `fruit`, `hop` |
 | `tr` | optioneel `1` bij een erkende trappist |
+| `gf` | optioneel `1` bij een glutenvrij bier dat op een ander bord staat; het verschijnt dan ook onder Glutenvrij |
 | `note` | korte beschrijving voor gasten, 1–3 zinnen |
 | `ar`, `sm`, `af` | optioneel: aroma, smaak en afdronk, elk één korte zin, alleen uit een bron (brouwerij, etiket, slijterij) |
 | `ig` | optioneel: ingrediënten zoals op etiket of bij de brouwerij vermeld |
