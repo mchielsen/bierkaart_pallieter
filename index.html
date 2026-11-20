@@ -244,6 +244,9 @@ mark{background:var(--amber);color:#1d1006;text-shadow:none;border-radius:2px;pa
   <figure class="promo" id="promo">
     <img src="pubquiz.jpg" width="840" height="1184" loading="eager" alt="Pallieters Pubquiz: zondag 13 december, aanvang 14.00 uur. Teams van minimaal 2 en maximaal 4 personen, inschrijfgeld 2,50 euro per persoon. Inschrijven uiterlijk 10 december aan de bar.">
   </figure>
+  <figure class="promo" id="promo-kerst">
+    <img src="kerstbieren.jpg" width="840" height="1184" loading="eager" alt="Pallieters Traditionele Kerstbieren-proefavond: zaterdag 19 december, aanvang 21.00 uur. 5 kerstbieren van de tap, 27,50 euro per persoon. Inschrijven uiterlijk 16 december.">
+  </figure>
 </div>
 
 <div class="bar">
@@ -284,6 +287,8 @@ mark{background:var(--amber);color:#1d1006;text-shadow:none;border-radius:2px;pa
 <script>
 /* Pubquiz-poster verdwijnt vanzelf na de quiz (13 december 2026) */
 if(new Date()>=new Date(2026,11,14)){const pq=document.getElementById("promo");if(pq)pq.remove()}
+/* Kerstbierenposter verdwijnt vanzelf na de proefavond (19 december 2026) */
+if(new Date()>=new Date(2026,11,20)){const kp=document.getElementById("promo-kerst");if(kp)kp.remove()}
 (function(){
 "use strict";
 
